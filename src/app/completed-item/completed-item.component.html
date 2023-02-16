@@ -1,0 +1,18 @@
+<div class="todo-item" *ngIf="todo.completed" [class.completed]="todo.completed" (click)="onClicked()">
+    <div class="check-box">
+        <i class="material-icons">check</i>
+    </div>
+    <div class="todo-text">
+        {{todo.text}}
+    </div>
+
+    <div class="todo-controls-box" (click)="$event.stopPropagation()">
+        <div class="todo-control-button" (click)="onEditClick()">
+            <i class="material-icons">edit</i>
+        </div>
+
+        <div class="todo-control-button is-danger" (click)="onDeleteClick()">
+            <i class="material-icons">delete</i>
+        </div>
+    </div>
+</div>

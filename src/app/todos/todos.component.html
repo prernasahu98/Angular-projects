@@ -1,0 +1,66 @@
+<section class="heading-section">
+    <h1 class="title is-1 has-text-centered">Create Your Todos</h1>
+    <div class="container-logout">
+        <button class="button alt-gradient-button" (click)="logOut()">
+            <i class="material-icons"></i>
+            Logout
+        </button>
+    </div>
+</section>
+
+<div class="container add-todo-box-container">
+    <div class="add-todo-box">
+
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+            <h2 class="title is-5">New Todo</h2>
+
+            <div class="field is-grouped" style="margin: 0;">
+                <p class="control is-expanded">
+                    <input class="input" type="text" placeholder="Enter todo task here..." ngModel name="text" required
+                        #todoTextField="ngModel" minlength="3">
+                </p>
+                <p class="control">
+                    <button class="button alt-gradient-button">
+                        <i class="material-icons">add_circle</i>
+                        Add
+                    </button>
+                </p>
+            </div>
+
+            <div *ngIf="todoTextField.invalid && showValidationErrors">
+                <p class="help is-danger" *ngIf="todoTextField.errors['required']">
+                    Please enter the text of your todo
+                </p>
+                <p class="help is-danger" *ngIf="todoTextField.errors['minlength']">
+                    Todo text must be atleast three characters
+                </p>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<section class="section">
+    <div class="container">
+
+        <div class="todos-list">
+
+            <p><span>Active Tasks</span></p>
+            <app-todo-item *ngFor="let todo of activeTodos; let i=index" [todo]="todo"
+                (todoClicked)="setCompleted(todo,i)" (editClicked)="onEditActive(todo)"
+                (deleteClicked)="onDeleteActive(todo)"></app-todo-item>
+
+        </div>
+        <br><br>
+        <div class="todos-list">
+
+            <p><span>Completed Tasks</span></p>
+            <app-completed-item *ngFor="let todo of completedTodos; let i = index" [todo]="todo"
+                (sendToActive)="setActive(todo,i)" (editClick)="onEditComplete(todo)"
+                (deleteClick)="onDeleteComplete(todo)"></app-completed-item>
+
+        </div>
+
+
+    </div>
+</section>

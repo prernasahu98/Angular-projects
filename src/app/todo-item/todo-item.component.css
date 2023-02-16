@@ -1,0 +1,118 @@
+.todo-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+
+    flex-direction: row;
+    font-size: 18px;
+
+    padding: 20px 10px;
+    border-bottom: 1px solid #f2f3f5;
+
+}
+
+.todo-item.completed {
+    color: #aaa;
+}
+
+.todo-item .check-box {
+    display: flex;
+    border: 2px solid #eee;
+    border-radius: 50%;
+    margin-right: 20px;
+
+    height: 28px;
+    width: 28px;
+
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.todo-item .check-box .material-icons {
+    font-size: 20px;
+    margin: auto;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.todo-item:hover .check-box {
+    background: #eee;
+}
+
+.todo-item:hover .check-box .material-icons {
+
+    opacity: 1;
+
+
+}
+
+.todo-item.completed .check-box {
+    background: rgb(8, 235, 175);
+    border-color: rgb(15, 248, 236);
+}
+
+.todo-item.completed .check-box .material-icons {
+    opacity: 1;
+}
+
+.todo-item .todo-controls-box {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+    display: flex;
+
+    /*hide by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.2s, visibilit 0.2s, transform 0.2s;
+}
+
+.todo-item:hover .todo-controls-box {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.2s;
+    transform: translateY(0);
+}
+
+.todo-controls-box .todo-control-button {
+    background: #f5f7f8;
+    padding: 6px 10px;
+    display: flex;
+
+}
+
+.todo-controls-box .todo-control-button:hover {
+    background: #eee;
+}
+
+.todo-controls-box .todo-control-button:hover .material-icons {
+    color: #333;
+}
+
+.todo-controls-box .todo-control-button:active {
+    background: #e5e7e8;
+}
+
+.todo-controls-box .todo-control-button .material-icons {
+    font-size: 20px;
+    color: #555;
+}
+
+.todo-controls-box .todo-control-button:first-of-type {
+    border-top-left-radius: 7px;
+    /* background: rgb(5, 234, 173); */
+}
+
+.todo-controls-box .todo-control-button:first-of-type:hover .material-icons {
+    color: rgb(10, 116, 209);
+}
+
+.todo-controls-box .todo-control-button:last-of-type {
+    border-top-right-radius: 7px;
+    /* background: rgb(235, 47, 62); */
+}
+
+.todo-controls-box .todo-control-button.is-danger:hover .material-icons {
+    color: rgb(219, 36, 36);
+}
